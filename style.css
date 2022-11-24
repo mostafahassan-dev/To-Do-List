@@ -1,0 +1,129 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    /* background-color: #5e0707; */
+}
+.container{
+    
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    margin: auto;
+    flex-direction: column;
+}
+.form{
+    width: 80%;
+    text-align: center;
+    padding: 5px;
+    background-color:rgb(207, 204, 204);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-radius: 10px;
+    
+}
+.input{
+    width: 85%;
+    margin:10px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 0 10px;
+    outline:none;
+}
+.add{
+    height: 40px;
+    margin-left: 10px;
+    min-width: 80px;
+    background-color: rgb(255, 72, 0);
+    color: white;
+    letter-spacing: .5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.tasks{
+    
+    width: 80%;
+    padding: 5px;
+    background-color:rgb(207, 204, 204);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    min-height: 70px;
+}
+
+
+.task{
+    width: 92%;
+    margin:8px;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    transition: .8s;
+}
+
+.del{
+    background-color: red;
+    width: 40px;
+    padding: 10px 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 12px;
+    text-align: center;
+    
+    
+}
+.done{
+    background-color: green;
+    width: 40px;
+    padding: 10px 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.done-tasks{
+    background-color: green;
+}
+
+.task p{
+    margin: 5px 0 ;
+    padding-left: 10px;
+}
+.btns{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    
+}
+.delet-all{
+    display: none;
+    width: 80%;
+    height: 40px;
+    border: none;
+    background-color: rgb(255, 72, 0);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
