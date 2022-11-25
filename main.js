@@ -25,7 +25,6 @@ function addTask() {
 //Add Tasks To Page
 function showTasks() {
   tasks.innerHTML = "";
-  console.log("From Show");
   arrayOfTasks.forEach((task) => {
     let div = document.createElement("div");
     div.classList.toggle("task");
