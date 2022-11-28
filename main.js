@@ -1,13 +1,22 @@
-let input = document.querySelector(".input");
-let submit = document.querySelector(".add");
-let tasks = document.querySelector(".tasks");
+let input = document.querySelector(".input"),
+  submit = document.querySelector(".add"),
+  tasks = document.querySelector(".tasks"),
+  //Empty Array To Stor Tasks
+  arrayOfTasks = [];
 
-//Empty Array To Stor Tasks
-let arrayOfTasks = [];
-
-if (localStorage.getItem("task")) {
+// progress Variables
+let progressBar = document.querySelector(".progress-bar"),
+  progressValue = document.querySelector(".progress-value");
+let startValue = 0,
+  endValue = 0;
+// Empty Array To Stor Done Tasks
+let counter = [];
+//Check On LosalStorage To Show Stored Data
+if (localStorage.getItem("task") || localStorage.getItem("completed")) {
   arrayOfTasks = JSON.parse(localStorage.getItem("task"));
+  counter = JSON.parse(localStorage.getItem("completed"));
   showTasks();
+  progress();
 }
 
 // Add Task To Tasks Div
@@ -25,6 +34,7 @@ function addTask() {
 //Add Tasks To Page
 function showTasks() {
   tasks.innerHTML = "";
+
   arrayOfTasks.forEach((task) => {
     let div = document.createElement("div");
     div.classList.toggle("task");
@@ -56,15 +66,18 @@ function showTasks() {
 
     tasks.appendChild(div);
   });
+  //Call Progress Function To Update Progress While Adding Tasks 
+  progress();
+
   //Show Claer All btn
   if (tasks.innerHTML != "") {
     document.querySelector(".delet-all").style.display = "block";
-  }else{
+  } else {
     // Remove Clear All btn
     document.querySelector(".delet-all").style.display = "none";
-
+    localStorage.clear();
   }
-  
+  //Add Tasks To LocalStorage
   localStorage.setItem("task", JSON.stringify(arrayOfTasks));
 }
 
@@ -83,7 +96,7 @@ input.addEventListener("keyup", (e) => {
 
 // Done & Delet btns
 tasks.addEventListener("click", (e) => {
-  if (e.target.className == "del") {
+  if (e.target.className === "del") {
     deletTask(e.target.parentElement.parentElement.getAttribute("data-id"));
   }
 
@@ -98,7 +111,7 @@ tasks.addEventListener("click", (e) => {
     e.target.parentElement.parentElement.classList.remove("done-tasks");
     showTasks();
   }
-  window.localStorage.setItem("task", JSON.stringify(arrayOfTasks));
+  //window.localStorage.setItem("task", JSON.stringify(arrayOfTasks));
 });
 
 //Delete Task With Task Id
@@ -108,6 +121,7 @@ function deletTask(taskId) {
 }
 
 // Toggle Done Tasks With Task Id
+
 function taskState(taskId) {
   for (let i = 0; i < arrayOfTasks.length; i++) {
     if (arrayOfTasks[i].id == taskId) {
@@ -123,6 +137,51 @@ function taskState(taskId) {
 document.querySelector(".delet-all").onclick = () => {
   tasks.innerHTML = "";
   document.querySelector(".delet-all").style.display = "none";
+
+  startValue = 0;
+  progressValue.textContent = `${startValue}%`;
+  progressBar.style.background = `conic-gradient(
+    #ff4800 ${startValue * 3.6}deg,
+    #ff48001c ${startValue * 3.6}deg
+    )`;
   arrayOfTasks = [];
   localStorage.clear();
 };
+
+//Progress Function
+function progress() {
+  counter = [];
+  //Add Done Tasks To Counter
+  for (let i = 0; i < arrayOfTasks.length; i++) {
+    if (arrayOfTasks[i].completed) {
+      counter.push(arrayOfTasks[i]);
+    }
+  }
+  //Display ProgressBar
+  if (arrayOfTasks.length != "") {
+    endValue = Math.round((100 * counter.length) / arrayOfTasks.length);
+    let update = setInterval(move, 0);
+
+    function move() {
+      startValue = endValue;
+      progressValue.textContent = `${startValue}%`;
+      progressBar.style.background = `conic-gradient(
+        #ff4800 ${startValue * 3.6}deg,
+        #ff48001c ${startValue * 3.6}deg
+        )`;
+
+      if (startValue == endValue || startValue >= 100) {
+        clearInterval(update);
+      }
+      //Add To LocalStorage
+      localStorage.setItem("completed", JSON.stringify(counter));
+    }
+  } else {
+    startValue = 0;
+    progressValue.textContent = `${startValue}%`;
+    progressBar.style.background = `conic-gradient(
+      #ff4800 ${startValue * 3.6}deg,
+      #ff48001c ${startValue * 3.6}deg
+      )`;
+  }
+}

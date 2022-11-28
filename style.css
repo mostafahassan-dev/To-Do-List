@@ -1,9 +1,10 @@
+
+
 body{
     font-family: 'Open Sans', sans-serif;
     
 }
 .container{
-    
     
     display: flex;
     align-items: center; 
@@ -126,4 +127,44 @@ body{
     cursor: pointer;
     letter-spacing: 1px;
     font-size: 15px;
+}
+
+.progress{
+    background-color: rgb(207, 204, 204);
+    height: 400px;
+    width: 400px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    margin-top: 20px;
+}
+.progress-bar{
+    background-color:#ff48001c;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    position: relative;
+    display: grid;
+    place-items: center;
+
+}
+.progress-bar::before{
+    content: "";
+    position: absolute;
+    background-color: rgb(207, 204, 204);
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+}
+.progress-value{
+    position: relative;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(255, 72, 0);
+}
+.text{
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: rgb(255, 72, 0);
+    font-size: 20px;
 }
