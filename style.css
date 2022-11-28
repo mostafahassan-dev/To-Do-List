@@ -138,6 +138,12 @@ body{
     place-items: center;
     margin-top: 20px;
 }
+
+@media(max-width: 760px){
+    .progress{
+        width: 80%;
+}
+}
 .progress-bar{
     background-color:#ff48001c;
     height: 250px;
