@@ -160,9 +160,8 @@ function progress() {
   //Display ProgressBar
   if (arrayOfTasks.length != "") {
     endValue = Math.round((100 * counter.length) / arrayOfTasks.length);
-    let update = setInterval(move, 0);
 
-    function move() {
+    function display() {
       startValue = endValue;
       progressValue.textContent = `${startValue}%`;
       progressBar.style.background = `conic-gradient(
@@ -170,12 +169,10 @@ function progress() {
         #ff48001c ${startValue * 3.6}deg
         )`;
 
-      if (startValue == endValue || startValue >= 100) {
-        clearInterval(update);
-      }
       //Add To LocalStorage
       localStorage.setItem("completed", JSON.stringify(counter));
     }
+    display()
   } else {
     startValue = 0;
     progressValue.textContent = `${startValue}%`;
@@ -183,5 +180,5 @@ function progress() {
       #ff4800 ${startValue * 3.6}deg,
       #ff48001c ${startValue * 3.6}deg
       )`;
-  }
+  } 
 }
