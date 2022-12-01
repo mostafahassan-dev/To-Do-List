@@ -66,7 +66,7 @@ function showTasks() {
 
     tasks.appendChild(div);
   });
-  //Call Progress Function To Update Progress While Adding Tasks 
+  //Call Progress Function To Update Progress While Adding Tasks
   progress();
 
   //Show Claer All btn
@@ -139,16 +139,20 @@ document.querySelector(".delet-all").onclick = () => {
   document.querySelector(".delet-all").style.display = "none";
 
   startValue = 0;
+  display();
+  arrayOfTasks = [];
+  localStorage.clear();
+};
+
+//Progress Functions
+function display() {
   progressValue.textContent = `${startValue}%`;
   progressBar.style.background = `conic-gradient(
     #ff4800 ${startValue * 3.6}deg,
     #ff48001c ${startValue * 3.6}deg
     )`;
-  arrayOfTasks = [];
-  localStorage.clear();
-};
+}
 
-//Progress Function
 function progress() {
   counter = [];
   //Add Done Tasks To Counter
@@ -160,25 +164,14 @@ function progress() {
   //Display ProgressBar
   if (arrayOfTasks.length != "") {
     endValue = Math.round((100 * counter.length) / arrayOfTasks.length);
+    startValue = endValue;
+    display();
+    //Add To LocalStorage
+    localStorage.setItem("completed", JSON.stringify(counter));
 
-    function display() {
-      startValue = endValue;
-      progressValue.textContent = `${startValue}%`;
-      progressBar.style.background = `conic-gradient(
-        #ff4800 ${startValue * 3.6}deg,
-        #ff48001c ${startValue * 3.6}deg
-        )`;
-
-      //Add To LocalStorage
-      localStorage.setItem("completed", JSON.stringify(counter));
-    }
-    display()
   } else {
+    //If All Tasks Was Deleted
     startValue = 0;
-    progressValue.textContent = `${startValue}%`;
-    progressBar.style.background = `conic-gradient(
-      #ff4800 ${startValue * 3.6}deg,
-      #ff48001c ${startValue * 3.6}deg
-      )`;
-  } 
+    display();
+  }
 }
