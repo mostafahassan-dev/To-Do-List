@@ -103,7 +103,7 @@ body{
 }
 
 .done-tasks{
-    background-color: green;
+    opacity: 0.3;
 }
 
 .task p{

@@ -34,7 +34,7 @@ function addTask() {
 //Add Tasks To Page
 function showTasks() {
   tasks.innerHTML = "";
-
+  
   arrayOfTasks.forEach((task) => {
     let div = document.createElement("div");
     div.classList.toggle("task");
@@ -60,7 +60,7 @@ function showTasks() {
     div.setAttribute("data-id", task.id);
 
     if (task.completed) {
-      div.className = "task done-tasks";
+      div.firstChild.className = "done-tasks";
       done.textContent = "✓";
     }
 
@@ -88,6 +88,7 @@ submit.addEventListener("click", () => {
     input.focus();
   }
 });
+//submit on click "Enter"
 input.addEventListener("keyup", (e) => {
   if (input.value != "" && e.key == "Enter") {
     addTask();
@@ -98,20 +99,16 @@ input.addEventListener("keyup", (e) => {
 tasks.addEventListener("click", (e) => {
   if (e.target.className === "del") {
     deletTask(e.target.parentElement.parentElement.getAttribute("data-id"));
+    showTasks()
   }
 
   // Toggle Done Tasks
-  if (e.target.value == "Done") {
+  if (e.target.className === "done") {
     taskState(e.target.parentElement.parentElement.getAttribute("data-id"));
-    e.target.parentElement.parentElement.classList.toggle("done-tasks");
-    e.target.value = "✓";
-    showTasks();
-  } else {
-    taskState(e.target.parentElement.parentElement.getAttribute("data-id"));
-    e.target.parentElement.parentElement.classList.remove("done-tasks");
     showTasks();
   }
-  //window.localStorage.setItem("task", JSON.stringify(arrayOfTasks));
+
+  window.localStorage.setItem("task", JSON.stringify(arrayOfTasks));
 });
 
 //Delete Task With Task Id
