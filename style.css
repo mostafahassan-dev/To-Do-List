@@ -91,7 +91,7 @@ body{
     
 }
 .done{
-    background-color: green;
+/*     background-color: green;
     width: 40px;
     padding: 10px 5px;
     border: none;
@@ -99,11 +99,13 @@ body{
     cursor: pointer;
     letter-spacing: 1px;
     font-size: 12px;
-    text-align: center;
+    text-align: center; */
+    opacity: 0.5;
 }
 
 .done-tasks{
-    background-color: green;
+/*     background-color: green; */
+    opacity: 0.5;
 }
 
 .task p{
