@@ -99,11 +99,19 @@ body{
     cursor: pointer;
     letter-spacing: 1px;
     font-size: 12px;
-    text-align: center;
+    text-align: center; 
+    
 }
 
 .done-tasks{
+<<<<<<< HEAD
     opacity: 0.3;
+||||||| 79f32bb
+    background-color: green;
+=======
+/*     background-color: green; */
+    opacity: 0.5;
+>>>>>>> 13f7736b67c9ccc2156f7a2b9705d96ea0528c27
 }
 
 .task p{
