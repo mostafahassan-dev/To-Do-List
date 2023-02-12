@@ -1,3 +1,14 @@
+let welcome = document.querySelector('.welcome')
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday"];
+let date =()=>{
+  let time = new Date();
+  let day = time.getDay();
+  welcome.innerHTML= ' Happy ' +days[day] ;
+}
+date()
+
+
 let input = document.querySelector(".input"),
   submit = document.querySelector(".add"),
   tasks = document.querySelector(".tasks"),
