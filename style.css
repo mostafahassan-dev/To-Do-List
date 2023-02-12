@@ -91,7 +91,7 @@ body{
     
 }
 .done{
-/*     background-color: green;
+    background-color: green;
     width: 40px;
     padding: 10px 5px;
     border: none;
@@ -99,8 +99,8 @@ body{
     cursor: pointer;
     letter-spacing: 1px;
     font-size: 12px;
-    text-align: center; */
-    opacity: 0.5;
+    text-align: center; 
+    
 }
 
 .done-tasks{
