@@ -82,7 +82,9 @@ function showTasks() {
 
   //Show Claer All btn
   if (tasks.innerHTML != "") {
+    document.querySelector(".delet-all").value = `Clear All Tasks (${arrayOfTasks.length})`;
     document.querySelector(".delet-all").style.display = "block";
+
   } else {
     // Remove Clear All btn
     document.querySelector(".delet-all").style.display = "none";
