@@ -1,17 +1,18 @@
 body{
     font-family: 'Open Sans', sans-serif;
-    
+    background: #0a0a0a1c;
 }
 .container{
-    
+    max-height: 100vh;
     display: flex;
     align-items: center; 
     justify-content: center;
     margin: auto;
     flex-direction: column;
+    
 }
 .intro{
-    margin: 10px;
+    margin: 0;
 }
 .intro .welcome{
     color: rgb(255, 72, 0) ;
@@ -28,7 +29,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 8px;
     border-radius: 10px;
     
 }
@@ -59,30 +60,27 @@ body{
 .tasks{
     
     width: 80%;
+    min-height: 52px;
+    max-height: 185px;
     padding: 5px;
     background-color:rgb(207, 204, 204);
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 10px;
     border-radius: 10px;
-    flex-direction: column;
-    min-height: 70px;
+    overflow-y: scroll;
 }
 
 
 .task{
     width: 92%;
-    margin:8px;
+    margin:8px auto;
     height: 35px;
     border-radius: 5px;
     font-size: 20px;
     background-color: aliceblue;
     display: flex;
     justify-content: center;
-    overflow: hidden;
-    transition: .8s;
+    overflow:hidden;
 }
 
 .del{
