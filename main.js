@@ -47,32 +47,46 @@ function showTasks() {
   tasks.innerHTML = "";
   
   arrayOfTasks.forEach((task) => {
+
     let div = document.createElement("div");
     div.classList.toggle("task");
     //Add Task Title
     let taskTitle = document.createElement("p");
     taskTitle.textContent = task.title;
     div.appendChild(taskTitle);
-    //Creat Done & Delete Btns
+    //Creat Done & Delete buttons
     let btns = document.createElement("div");
     btns.className = "btns";
+    
     //Done
     let done = document.createElement("span");
     done.className = "done";
-    done.textContent = "Done";
+    done.innerHTML = '<i class="fa-solid fa-square-check"></i>';
     btns.appendChild(done);
+    
     //Delete
     let del = document.createElement("span");
     del.className = "del";
-    del.textContent = "Delete";
+    del.innerHTML = '<i class="fa-solid fa-square-xmark"></i>';
     btns.appendChild(del);
     div.appendChild(btns);
 
     div.setAttribute("data-id", task.id);
 
+    // Add event listeners to the "Done" and "Delete" buttons
+    done.addEventListener("click", () => {
+      taskState(task.id);
+      showTasks();
+    });
+
+    del.addEventListener("click", () => {
+      deletTask(task.id);
+      showTasks();
+    });
+
     if (task.completed) {
       div.firstChild.className = "done-tasks";
-      done.textContent = "✓";
+      done.innerHTML ='<i class="fa-solid fa-check"></i>'
     }
 
     tasks.appendChild(div);
@@ -108,21 +122,6 @@ input.addEventListener("keyup", (e) => {
   }
 });
 
-// Done & Delet btns
-tasks.addEventListener("click", (e) => {
-  if (e.target.className === "del") {
-    deletTask(e.target.parentElement.parentElement.getAttribute("data-id"));
-    showTasks()
-  }
-
-  // Toggle Done Tasks
-  if (e.target.className === "done") {
-    taskState(e.target.parentElement.parentElement.getAttribute("data-id"));
-    showTasks();
-  }
-
-  window.localStorage.setItem("task", JSON.stringify(arrayOfTasks));
-});
 
 //Delete Task With Task Id
 function deletTask(taskId) {
@@ -158,10 +157,11 @@ document.querySelector(".delet-all").onclick = () => {
 function display() {
   progressValue.textContent = `${startValue}%`;
   progressBar.style.background = `conic-gradient(
-    #ff4800 ${startValue * 3.6}deg,
-    #ff48001c ${startValue * 3.6}deg
+   ${startValue * 3.6}deg,
+   ${startValue * 3.6}deg
     )`;
 }
+
 
 function progress() {
   counter = [];

@@ -9,28 +9,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>To Do List</title>
 </head>
 <body>
-    <div class="container">
-        <div class="intro">
-            <h1 class="welcome"></h1>
-        </div>
-        <div class="form">
-            <input type="text" class="input" placeholder="Add Your Task">
-            <input type="submit" class="add" value="Add Task">
-        </div>
-        <div class="tasks"></div>
-        <input type="submit" class="delet-all" >
-
-        <!-- Progress -->
-    <div class="progress">
-        <div class="progress-bar">
-            <span class="progress-value">0%</span>
-        </div>
-        <span class="text">Your Progress</span>
+    <div class="intro">
+        <h1 class="welcome"></h1>
     </div>
+
+    <div class="container">
+         <!-- Progress -->
+         <div class="progress">
+            <div class="progress-bar">
+                <span class="progress-value">0%</span>
+            </div>
+            <span class="text">Your Progress</span>
+        </div>
+        <!-- form -->
+        <div class="form">
+            <h2>Tasks</h2>
+            <div class="add-task">
+                <input type="text" class="input" placeholder="Add Your Task">
+                <input type="submit" class="add" value="Add Task">
+            </div>
+            <div class="tasks"></div>
+            <input type="button" class="delet-all" >
+        </div>
+
+       
     </div>    
 
     <script src="main.js"></script>
