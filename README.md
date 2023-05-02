@@ -1,5 +1,7 @@
 # To-Do-List
-Simple To-Do List with LocalStorage using HTML, CSS, JavaScript.
+Simple to-do list web application features a simple and intuitive user interface that allows users to easily add and manage tasks. 
+You can add tasks, mark them as completed, and delete them. The application also provides a progress bar that shows the percentage of completed tasks.
+Additionally, the application includes local storage functionality
 
 ### Demo:
 - https://mostafa-zewail77.github.io/To-Do-List/
