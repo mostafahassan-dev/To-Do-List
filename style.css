@@ -12,7 +12,7 @@
 body{
     font-family: 'Open Sans', sans-serif;
     background: var(--color-pale-blue);
-    min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
