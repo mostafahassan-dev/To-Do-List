@@ -79,6 +79,9 @@ body{
     padding: 0 10px;
     outline:none;
     background-color: var(--color-pale-blue);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .add{
@@ -121,6 +124,14 @@ body{
     overflow:hidden;
 }
 
+.task p{
+    margin: 5px 0 ;
+    padding-left: 10px;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 .done, .del{
    
@@ -134,10 +145,7 @@ body{
 .done-tasks{
     opacity: 0.3;
 }
-.task p{
-    margin: 5px 0 ;
-    padding-left: 10px;
-}
+
 .btns{
     display: flex;
     flex: 1;
@@ -210,8 +218,7 @@ body{
     .intro{
         display: none;
     }
-    .container{
-        
+    .container{      
         flex-direction: column;
         box-shadow: none;
         width: 100%;
@@ -223,11 +230,18 @@ body{
         border-top-right-radius: 0;
         border-top-left-radius:0 ;
         width: 100%;
-        
+    }
+    .progress-bar{
+        margin: 1rem 0;
+    }
+    
+    .text{
+        margin: 1rem 0;
        
     }
    
     .form{
         width: 100%;
     }
+   
 }
