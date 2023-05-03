@@ -190,8 +190,6 @@ body{
     display: grid;
     place-items: center;
     background: var(--gradient-2);
-
-
 }
 
 

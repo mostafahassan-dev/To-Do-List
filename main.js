@@ -16,10 +16,8 @@ let input = document.querySelector(".input"),
   arrayOfTasks = [];
 
 // progress Variables
-let progressBar = document.querySelector(".progress-bar"),
-  progressValue = document.querySelector(".progress-value");
-let startValue = 0,
-  endValue = 0;
+let progressValue = document.querySelector(".progress-value");
+let startValue = 0,  endValue = 0;
 // Empty Array To Stor Done Tasks
 let counter = [];
 //Check On LosalStorage To Show Stored Data
@@ -146,23 +144,12 @@ function taskState(taskId) {
 document.querySelector(".delet-all").onclick = () => {
   tasks.innerHTML = "";
   document.querySelector(".delet-all").style.display = "none";
-
-  startValue = 0;
-  display();
+  progressValue.textContent = "0%";
   arrayOfTasks = [];
   localStorage.clear();
 };
 
-//Progress Functions
-function display() {
-  progressValue.textContent = `${startValue}%`;
-  progressBar.style.background = `conic-gradient(
-   ${startValue * 3.6}deg,
-   ${startValue * 3.6}deg
-    )`;
-}
-
-
+//Progress
 function progress() {
   counter = [];
   //Add Done Tasks To Counter
@@ -171,17 +158,18 @@ function progress() {
       counter.push(arrayOfTasks[i]);
     }
   }
+
   //Display ProgressBar
   if (arrayOfTasks.length != "") {
     endValue = Math.round((100 * counter.length) / arrayOfTasks.length);
     startValue = endValue;
-    display();
+    progressValue.textContent = `${startValue}%`;
     //Add To LocalStorage
     localStorage.setItem("completed", JSON.stringify(counter));
 
   } else {
     //If All Tasks Was Deleted
     startValue = 0;
-    display();
+    progressValue.textContent = `${startValue}%`;
   }
 }
